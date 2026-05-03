@@ -2,11 +2,9 @@
 
 @section('admin-content')
 
-<h2>Admin Dashboard</h2>
+<h3 class="mb-3">Admin Dashboard</h3>
 
-<div class="card">
-    <div class="card-body">
-        Welcome, {{ auth()->user()->name }}
-    </div>
+<div class="alert alert-info">
+    Welcome, {{ auth()->user()->name }}
 </div>
 @endsection

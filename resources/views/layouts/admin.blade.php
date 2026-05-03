@@ -4,41 +4,47 @@
 
 <div class="row">
 
-    <!-- 🔹 Sidebar -->
-    <div class="col-md-3">
+    <!-- Sidebar -->
+    <div class="col-md-3 mb-3">
 
-        <button class="btn btn-dark mb-2" onclick="toggleSidebar()">☰</button>
+        <button class="btn btn-dark w-100 mb-2" onclick="toggleSidebar()">☰ Menu</button>
 
-        <div id="sidebar" class="list-group">
+        <div id="sidebar" class="list-group shadow-sm">
 
-            <a href="/admin/dashboard"
-               class="list-group-item {{ request()->is('admin/dashboard') ? 'active' : '' }}">
+            <a href="{{ route('admin.dashboard') }}"
+               class="list-group-item list-group-item-action {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
                 Dashboard
             </a>
 
-            <a href="/admin/users"
-               class="list-group-item {{ request()->is('admin/users*') ? 'active' : '' }}">
+            <a href="{{ route('admin.users.index') }}"
+               class="list-group-item list-group-item-action {{ request()->routeIs('admin.users.*') ? 'active' : '' }}">
                 Manage Users
             </a>
 
-            <a href="/admin/roles"
-               class="list-group-item {{ request()->is('admin/roles*') ? 'active' : '' }}">
+            <a href="{{ route('admin.roles.index') }}"
+               class="list-group-item list-group-item-action {{ request()->routeIs('admin.roles.*') ? 'active' : '' }}">
                 Roles
             </a>
 
         </div>
     </div>
 
-    <!-- 🔹 Content -->
+    <!-- Content -->
     <div class="col-md-9">
-        @yield('admin-content')
+        <div class="card shadow-sm">
+            <div class="card-body">
+                @yield('admin-content')
+            </div>
+        </div>
     </div>
 
 </div>
+
 <script>
+// Toggle sidebar visibility (mobile friendly)
 function toggleSidebar() {
     let sidebar = document.getElementById('sidebar');
-    sidebar.style.display = (sidebar.style.display === 'none') ? 'block' : 'none';
+    sidebar.style.display = (sidebar.style.display === 'none') ? 'block' : 'block';
 }
 </script>
 
